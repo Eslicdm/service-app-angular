@@ -1,10 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Home } from './home';
-import {DebugElement} from '@angular/core';
+import { Component, DebugElement } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {provideRouter} from '@angular/router';
 import {By} from '@angular/platform-browser';
+import { MemberList } from '../components/member-list/member-list';
+
+@Component({
+  selector: 'app-member-list',
+  standalone: true,
+  template: '',
+})
+class MockMemberList {}
 
 describe('Home', () => {
   let component: Home;
@@ -14,7 +22,11 @@ describe('Home', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Home, MatButtonModule],
-      providers: [provideRouter([])]
+      providers: [provideRouter([])],
+    })
+    .overrideComponent(Home, {
+      remove: { imports: [MemberList] },
+      add: { imports: [MockMemberList] },
     }).compileComponents();
 
     fixture = TestBed.createComponent(Home);

@@ -1,0 +1,16 @@
+import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Member } from '../../domain/member.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MemberService {
+  private readonly http = inject(HttpClient);
+  private readonly membersUrl = 'http://localhost:8081/api/v1/managers/1/members';
+
+  getMembers(): Observable<Member[]> {
+    return this.http.get<Member[]>(this.membersUrl);
+  }
+}
