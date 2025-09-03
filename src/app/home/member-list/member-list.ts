@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
-import {Member} from '../../../domain/member.model';
+import {Member} from '../model/member.model';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MemberService} from '../../../data/service/member.service';
+import {MemberService} from '../member-service/member.service';
 
 type MemberState = {
   members: Member[];

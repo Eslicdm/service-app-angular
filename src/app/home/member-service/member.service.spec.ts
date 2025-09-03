@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideHttpClient } from '@angular/common/http';
-import { Member } from '../../domain/member.model';
+import { Member } from '../model/member.model';
 import {MemberService} from './member.service';
 
 describe('MemberService', () => {
@@ -24,7 +24,7 @@ describe('MemberService', () => {
     httpTestingController.verify();
   });
 
-  it('should create MemberService', () => {
+  it('should be created', () => {
     expect(service).toBeTruthy();
   });
 

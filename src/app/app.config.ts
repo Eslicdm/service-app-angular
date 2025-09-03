@@ -1,14 +1,22 @@
-import {ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection} from '@angular/core';
+import {
+  ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+  provideZoneChangeDetection
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 
-import { provideHttpClient } from '@angular/common/http';
-import {routes} from './app.routes';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { appRoutes } from './app.routes';
+import { OAuthStorage, provideOAuthClient } from 'angular-oauth2-oidc';
+import { authInterceptor } from './auth/data/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
-    provideHttpClient(),
+    provideRouter(appRoutes),
+    provideHttpClient(withInterceptors([authInterceptor])),
+    provideOAuthClient(),
+    { provide: OAuthStorage, useValue: localStorage },
   ]
 };

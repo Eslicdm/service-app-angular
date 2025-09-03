@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 import { MemberList } from './member-list';
-import { Member } from '../../../domain/member.model';
-import {MemberService} from '../../../data/service/member.service';
+import { Member } from '../model/member.model';
+import {MemberService} from '../member-service/member.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
@@ -41,7 +41,7 @@ describe('MemberList', () => {
     }).compileComponents();
   });
 
-  it('should create MemberList', () => {
+  it('should be created', () => {
     mockMemberService.getMembers.and.returnValue(of([]));
     fixture = TestBed.createComponent(MemberList);
     component = fixture.componentInstance;

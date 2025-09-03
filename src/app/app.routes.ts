@@ -1,8 +1,17 @@
 import { Routes } from '@angular/router';
-import {Home} from './presentation/home/home';
-import {Login} from './presentation/login/login';
+import { Home } from './home/home';
+import { authGuard } from './auth/data/auth.guard';
 
-export const routes: Routes = [
-  { path: '', component: Home, title: "Home Page" },
-  { path: 'login', component: Login, title: "Login Page"},
+export const appRoutes: Routes = [
+  {
+    path: '',
+    component: Home,
+    canActivate: [authGuard],
+    title: 'Home',
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./auth/auth.routes')
+      .then((module) => module.AUTH_ROUTES),
+  },
 ];
