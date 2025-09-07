@@ -77,11 +77,9 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {
-                "glob": "**/*",
-                "input": "public"
+                "glob": "**/*", "input": "public"
               },
-              "src/assets",
-              "src/silent-refresh.html"
+              "src/assets", "src/silent-refresh.html"
             ],
             "styles": [
               "src/styles.css"
