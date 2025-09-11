@@ -10,7 +10,7 @@ describe('Authentication Flows', () => {
     cy.login();
 
     cy.visit('/');
-    cy.contains('p', 'Home').should('be.visible');
+    cy.contains('p', 'Member').should('be.visible');
 
     cy.logout();
 

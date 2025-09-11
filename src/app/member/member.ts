@@ -4,16 +4,16 @@ import {MemberList} from './member-list/member-list';
 import { AuthService } from '../auth/data/auth.service';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-member',
   standalone: true,
   imports: [
     MatButtonModule,
     MemberList
   ],
-  templateUrl: './home.html',
+  templateUrl: './member.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Home {
+export class Member {
   private readonly authService = inject(AuthService);
 
   logout(): void {

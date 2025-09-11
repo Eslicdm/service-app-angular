@@ -1,13 +1,18 @@
 import { Routes } from '@angular/router';
-import { Home } from './home/home';
+import { Member } from './member/member';
 import { authGuard } from './auth/data/auth.guard';
 
 export const appRoutes: Routes = [
   {
     path: '',
-    component: Home,
+    redirectTo: '/member',
+    pathMatch:'full'
+  },
+  {
+    path: 'member',
+    component: Member,
     canActivate: [authGuard],
-    title: 'Home',
+    title: 'Member',
   },
   {
     path: 'login',

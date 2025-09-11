@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Home } from './home';
+import { Member } from './member';
 import { Component, DebugElement } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {By} from '@angular/platform-browser';
@@ -14,24 +14,24 @@ import { AuthService } from '../auth/data/auth.service';
 })
 class MockMemberList {}
 
-describe('Home', () => {
-  let component: Home;
-  let fixture: ComponentFixture<Home>;
+describe('Member', () => {
+  let component: Member;
+  let fixture: ComponentFixture<Member>;
   let debugElement: DebugElement;
   let mockAuthService: jasmine.SpyObj<AuthService>;
 
   beforeEach(async () => {
     mockAuthService = jasmine.createSpyObj('AuthService', ['logout']);
     await TestBed.configureTestingModule({
-      imports: [Home, MatButtonModule],
+      imports: [Member, MatButtonModule],
       providers: [{ provide: AuthService, useValue: mockAuthService }],
     })
-    .overrideComponent(Home, {
+    .overrideComponent(Member, {
       remove: { imports: [MemberList] },
       add: { imports: [MockMemberList] },
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Home);
+    fixture = TestBed.createComponent(Member);
     component = fixture.componentInstance;
     debugElement = fixture.debugElement;
     fixture.detectChanges();
@@ -41,10 +41,10 @@ describe('Home', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render the home text and a logout button', () => {
+  it('should render the member text and a logout button', () => {
     const p = debugElement.query(By.css('p'));
     expect(p).withContext('<p> tag should exist').toBeTruthy();
-    expect(p.nativeElement.textContent).toBe('Home');
+    expect(p.nativeElement.textContent).toBe('Member');
 
     const logoutButton = debugElement.query(By.css('[data-testid="logout-button"]'));
     expect(logoutButton).withContext('logout button should exist').toBeTruthy();

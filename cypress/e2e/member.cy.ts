@@ -1,4 +1,4 @@
-describe('Home Page', () => {
+describe('Member Page', () => {
   beforeEach(() => {
     cy.login();
 
@@ -9,9 +9,9 @@ describe('Home Page', () => {
     cy.visit('/');
   });
 
-  it('should display the home content and member list for an authenticated user', () => {
+  it('should display the member content and member list for an authenticated user', () => {
     cy.url().should('not.include', '/login');
-    cy.contains('p', 'Home');
+    cy.contains('p', 'Member');
 
     cy.wait('@getMembers');
 
