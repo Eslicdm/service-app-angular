@@ -8,7 +8,7 @@ import { Member } from '../model/member.model';
 })
 export class MemberService {
   private readonly http = inject(HttpClient);
-  private readonly membersUrl = 'http://localhost:8081/api/v1/managers/1/members';
+  private readonly membersUrl = 'http://localhost:8090/api/v1/members/1';
 
   getMembers(): Observable<Member[]> {
     return this.http.get<Member[]>(this.membersUrl);

@@ -2,7 +2,7 @@ describe('Member Page', () => {
   beforeEach(() => {
     cy.login();
 
-    cy.intercept('GET', '**/api/v1/managers/1/members', {
+    cy.intercept('GET', '**/api/v1/members/1', {
       fixture: 'members.json',
     }).as('getMembers');
 

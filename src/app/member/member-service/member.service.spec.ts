@@ -38,7 +38,7 @@ describe('MemberService', () => {
       serviceType: 'full',
       managerId: 1
     }];
-    const testUrl = 'http://localhost:8081/api/v1/managers/1/members';
+    const testUrl = 'http://localhost:8090/api/v1/members/1';
 
     service.getMembers().subscribe(data => expect(data).toEqual(testData));
 

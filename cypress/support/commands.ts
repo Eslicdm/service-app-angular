@@ -3,7 +3,7 @@
 Cypress.Commands.add('login', () => {
   const header = { alg: 'RS256', typ: 'JWT' };
   const payload = {
-    iss: 'http://localhost:8080/realms/service-app',
+    iss: 'http://localhost:8080/realms/service-app-realm',
     sub: 'test-user-id',
     name: 'Cypress Test User',
     email: 'test@example.com',
