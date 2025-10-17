@@ -1,8 +1,10 @@
+import {environment} from 'environment';
+
 describe('Member Page', () => {
   beforeEach(() => {
     cy.login();
 
-    cy.intercept('GET', '**/api/v1/members/1', {
+    cy.intercept('GET', `**/api${environment.apiPaths.members}`, {
       fixture: 'members.json',
     }).as('getMembers');
 

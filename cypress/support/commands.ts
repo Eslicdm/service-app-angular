@@ -1,9 +1,11 @@
 /// <reference types="cypress" />
 
+import {environment} from 'environment';
+
 Cypress.Commands.add('login', () => {
   const header = { alg: 'RS256', typ: 'JWT' };
   const payload = {
-    iss: 'http://localhost:8080/realms/service-app-realm',
+    iss: environment.keycloak.issuer,
     sub: 'test-user-id',
     name: 'Cypress Test User',
     email: 'test@example.com',

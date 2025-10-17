@@ -1,7 +1,9 @@
+import {environment} from 'environment';
+
 describe('Authentication Flows', () => {
   it('should redirect an unauthenticated user to the login page', () => {
     cy.visit('/');
-    cy.url().should('include', '/login');
+    cy.url().should('include', `/${environment.routes.login}`);
     cy.contains('p', 'Login');
     cy.get('[data-testid="login-button"]').should('be.visible');
   });
@@ -15,7 +17,7 @@ describe('Authentication Flows', () => {
     cy.logout();
 
     cy.visit('/');
-    cy.url().should('include', '/login');
+    cy.url().should('include', `/${environment.routes.login}`);
     cy.get('[data-testid="login-button"]').should('be.visible');
   });
 });

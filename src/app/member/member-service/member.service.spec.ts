@@ -3,10 +3,12 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { provideHttpClient } from '@angular/common/http';
 import { Member } from '../model/member.model';
 import {MemberService} from './member.service';
+import {environment} from 'environment';
 
 describe('MemberService', () => {
   let service: MemberService;
   let httpTestingController: HttpTestingController;
+  const testUrl = `${environment.apiUrl}${environment.apiPaths.members}`;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -38,7 +40,6 @@ describe('MemberService', () => {
       serviceType: 'full',
       managerId: 1
     }];
-    const testUrl = 'http://localhost:8090/api/v1/members/1';
 
     service.getMembers().subscribe(data => expect(data).toEqual(testData));
 

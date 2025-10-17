@@ -1,0 +1,90 @@
+<div class="landing-page-container">
+  <h1>Landing Page</h1>
+
+  <div class="login-buttons-container">
+    <button
+      mat-flat-button
+      (click)="navigateToLogin(environment.routes.memberLogin)"
+      data-testid="member-login"
+    >Login Member</button>
+    <button
+      mat-flat-button
+      (click)="navigateToLogin(environment.routes.pricingLogin)"
+      data-testid="pricing-login"
+    >Login Pricing</button>
+  </div>
+
+  <div class="pricing-plans-container">
+    <mat-card class="pricing-card">
+      <mat-card-header>
+        <mat-card-title>Free</mat-card-title>
+        <mat-card-subtitle>$0/month</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li>1GB Storage</li>
+        </ul>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button>Buy</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="pricing-card">
+      <mat-card-header>
+        <mat-card-title>Half Price</mat-card-title>
+        <mat-card-subtitle>$50/month</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li>7GB Storage</li>
+        </ul>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button>Buy</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="pricing-card">
+      <mat-card-header>
+        <mat-card-title>Full Price</mat-card-title>
+        <mat-card-subtitle>$100/month</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li>15GB Storage</li>
+        </ul>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button>Buy</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="ai-question-section">
+    <h2>Ask questions about plans, AI will help you!</h2>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Write...</mat-label>
+      <textarea matInput></textarea>
+    </mat-form-field>
+    <div class="ai-response">AI Response</div>
+  </div>
+
+  <div class="email-submission-form">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>ServiceType (Free)</mat-label>
+      <mat-select value="Free">
+        <mat-option value="Free">Free</mat-option>
+        <mat-option value="Half Price">Half Price</mat-option>
+        <mat-option value="Full Price">Full Price</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary">Submit</button>
+  </div>
+</div>

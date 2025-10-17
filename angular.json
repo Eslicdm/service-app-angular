@@ -25,7 +25,10 @@
             "assets": [
               "src/assets",
               "src/silent-refresh.html",
-              { "glob": "**/*", "input": "public" }
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
             ]
           },
           "configurations": {
@@ -77,12 +80,23 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {
-                "glob": "**/*", "input": "public"
+                "glob": "**/*",
+                "input": "public"
               },
-              "src/assets", "src/silent-refresh.html"
+              "src/assets",
+              "src/silent-refresh.html"
             ],
             "styles": [
               "src/styles.css"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
             ]
           }
         }
@@ -90,6 +104,9 @@
     }
   },
   "cli": {
-    "analytics": "9a6107f8-1cc4-4d03-8d49-3cdf0c4b0131"
+    "analytics": "9a6107f8-1cc4-4d03-8d49-3cdf0c4b0131",
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }
