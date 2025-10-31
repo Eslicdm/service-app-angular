@@ -1,10 +1,5 @@
 import {Routes} from '@angular/router';
-import {Member} from './member/member';
-import {Landing} from './landing/landing';
-import {Pricing} from './pricing/pricing';
-import {environment} from 'environment';
-import {MemberLogin} from './auth/member-login/member-login';
-import {PricingLogin} from './auth/pricing-login/pricing-login';
+import {environment} from '../environments/environment';
 
 export const appRoutes: Routes = [
   {
@@ -12,22 +7,22 @@ export const appRoutes: Routes = [
     redirectTo: `${environment.routes.landing}`, pathMatch: 'full'},
   {
     path: environment.routes.landing,
-    component: Landing, title: 'Landing'
+    loadComponent: () => import('./landing/landing').then(m => m.Landing),
+    title: 'Landing'
   },
   {
     path: environment.routes.pricing,
-    component: Pricing, title: 'Pricing'
+    loadComponent: () => import('./pricing/pricing').then(m => m.Pricing),
+    title: 'Pricing',
   },
   {
     path: environment.routes.member,
-    component: Member, title: 'Member'
+    loadComponent: () => import('./member/member').then(m => m.Member),
+    title: 'Member',
   },
   {
-    path: environment.routes.memberLogin,
-    component: MemberLogin, title: 'Member Login'
-  },
-  {
-    path: environment.routes.pricingLogin,
-    component: PricingLogin, title: 'Pricing Login'
+    path: environment.routes.login,
+    loadComponent: () => import('./auth/login/login').then(m => m.Login),
+    title: 'Login'
   },
 ];

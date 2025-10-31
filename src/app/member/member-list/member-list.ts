@@ -17,7 +17,6 @@ type MemberState = {
     MatProgressSpinnerModule
   ],
   templateUrl: './member-list.html',
-  styleUrl: './member-list.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MemberList {

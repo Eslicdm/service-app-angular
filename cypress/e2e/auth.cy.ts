@@ -1,4 +1,4 @@
-import {environment} from 'environment';
+import {environment} from 'src/environments/environment';
 
 describe('Authentication Flows', () => {
   it('should redirect an unauthenticated user to the login page', () => {

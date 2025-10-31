@@ -1,82 +1,85 @@
-<div class="landing-page-container">
-  <h1>Landing Page</h1>
+<mat-toolbar>
+  <span class="flex-auto"></span>
+  <span class="text-xl font-bold">Landing Page</span>
+  <span class="flex-auto text-right">
+    <button mat-flat-button (click)="navigateToLogin(environment.routes.login)"
+            data-testid="login">Login</button>
+  </span>
+</mat-toolbar>
+<div class="mx-auto flex max-w-6xl flex-col items-center gap-8 p-5 pt-8">
+  <div class="mb-8 flex flex-wrap justify-center gap-5 md:flex-nowrap">
+    <div class="w-full rounded-lg border-2 border-solid border-gray-300 md:w-72">
+      <mat-card class="text-left">
+        <mat-card-header>
+          <mat-card-title>Free</mat-card-title>
+          <mat-card-subtitle>$0/month</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <ul class="m-0 list-none p-0 py-4">
+            <li class="mb-1">1GB Storage</li>
+          </ul>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button>Buy</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
 
-  <div class="login-buttons-container">
-    <button
-      mat-flat-button
-      (click)="navigateToLogin(environment.routes.memberLogin)"
-      data-testid="member-login"
-    >Login Member</button>
-    <button
-      mat-flat-button
-      (click)="navigateToLogin(environment.routes.pricingLogin)"
-      data-testid="pricing-login"
-    >Login Pricing</button>
+    <div class="w-full rounded-lg border-2 border-solid border-gray-300 md:w-72">
+      <mat-card class="text-left">
+        <mat-card-header>
+          <mat-card-title>Half Price</mat-card-title>
+          <mat-card-subtitle>$50/month</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <ul class="m-0 list-none p-0 py-4">
+            <li class="mb-1">7GB Storage</li>
+          </ul>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button>Buy</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div class="w-full rounded-lg border-2 border-solid border-gray-300 md:w-72">
+      <mat-card class="text-left">
+        <mat-card-header>
+          <mat-card-title>Full Price</mat-card-title>
+          <mat-card-subtitle>$100/month</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <ul class="m-0 list-none p-0 py-4">
+            <li class="mb-1">15GB Storage</li>
+          </ul>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button>Buy</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
   </div>
 
-  <div class="pricing-plans-container">
-    <mat-card class="pricing-card">
-      <mat-card-header>
-        <mat-card-title>Free</mat-card-title>
-        <mat-card-subtitle>$0/month</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <ul>
-          <li>1GB Storage</li>
-        </ul>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-flat-button>Buy</button>
-      </mat-card-actions>
-    </mat-card>
-
-    <mat-card class="pricing-card">
-      <mat-card-header>
-        <mat-card-title>Half Price</mat-card-title>
-        <mat-card-subtitle>$50/month</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <ul>
-          <li>7GB Storage</li>
-        </ul>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-flat-button>Buy</button>
-      </mat-card-actions>
-    </mat-card>
-
-    <mat-card class="pricing-card">
-      <mat-card-header>
-        <mat-card-title>Full Price</mat-card-title>
-        <mat-card-subtitle>$100/month</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <ul>
-          <li>15GB Storage</li>
-        </ul>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-flat-button>Buy</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-
-  <div class="ai-question-section">
-    <h2>Ask questions about plans, AI will help you!</h2>
-    <mat-form-field appearance="fill" class="full-width">
+  <div class="flex w-full max-w-xl flex-col gap-4 rounded-lg border-2 border-solid p-6">
+    <h2 class="mb-4 text-center text-xl font-semibold">
+      Ask questions about plans, AI will help you!
+    </h2>
+    <mat-form-field appearance="fill" class="w-full">
       <mat-label>Write...</mat-label>
       <textarea matInput></textarea>
     </mat-form-field>
-    <div class="ai-response">AI Response</div>
+    <div class="flex min-h-20 items-center justify-center rounded border border-solid p-4">
+      AI Response
+    </div>
   </div>
 
-  <div class="email-submission-form">
-    <mat-form-field appearance="fill" class="full-width">
+  <div class="flex w-full max-w-xl flex-col gap-4 rounded-lg border-2 border-solid p-6">
+    <mat-form-field appearance="fill" class="w-full">
       <mat-label>Email</mat-label>
-      <input matInput type="email">
+      <input matInput type="email" />
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="fill" class="w-full">
       <mat-label>ServiceType (Free)</mat-label>
       <mat-select value="Free">
         <mat-option value="Free">Free</mat-option>

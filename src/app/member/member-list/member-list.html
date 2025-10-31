@@ -1,14 +1,14 @@
 @switch (memberState().status) {
   @case ('loading') {
-    <div class="spinner-container">
+    <div class="flex items-center justify-center p-8">
       <mat-spinner />
     </div>
   }
   @case ('error') {
-    <p class="error-message">Failed to load members. Please try again later.</p>
+    <p class="text-center text-red-600">Failed to load members. Please try again later.</p>
   }
   @case ('loaded') {
-    <div class="member-grid">
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4">
       @for (member of memberState().members; track member.id) {
         <mat-card>
           <mat-card-header>

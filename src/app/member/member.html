@@ -1,4 +1,9 @@
-<p>Member</p>
+<p>Member Page</p>
+<!-- @if (user(); as u) {
+  <div>
+    <p>Welcome, {{ u.name }} ({{ u.email }})</p>
+  </div>
+} -->
 <button
   mat-flat-button
   (click)="logout()"

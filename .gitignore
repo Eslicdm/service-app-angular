@@ -23,6 +23,10 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
+.env
+
+# Generated environment files with secrets
+./src/environments/environment.development.ts
 
 # Visual Studio Code
 .vscode/*

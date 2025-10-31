@@ -2,10 +2,10 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Member } from '../model/member.model';
-import {environment} from 'environment';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MemberService {
   private readonly http = inject(HttpClient);

@@ -1,4 +1,4 @@
-import {environment} from 'environment';
+import {environment} from 'src/environments/environment';
 
 describe('Member Page', () => {
   beforeEach(() => {

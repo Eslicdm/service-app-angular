@@ -6,13 +6,14 @@ This application provides a centralized platform for enterprise managers to admi
 
 **Devops:**
 
-* Github Actions
+* GitHub Actions
 * SonarQube
 * Docker
+* Terraform
 * Kubernetes
 * OpenTelemetry
 * Datadog
-* Terraform + AWS (after finishing)
+* AWS
 
 
 
@@ -24,6 +25,7 @@ This application provides a centralized platform for enterprise managers to admi
 * Jetpack Compose
 
 
+
 **Web Angular:**
 
 * Angular Material
@@ -32,6 +34,7 @@ This application provides a centralized platform for enterprise managers to admi
 * Karma
 * Angular Testing Library
 * Cypress
+
 
 
 **Backend:**
@@ -50,6 +53,7 @@ This application provides a centralized platform for enterprise managers to admi
   * JUnit
   * Mockito
   * Testcontainers
+  * WireMock
 
 * Spring Cloud:
 
@@ -65,7 +69,6 @@ This application provides a centralized platform for enterprise managers to admi
 
 ## Domain: Diagram
 
-* Follow TDD and make a test for each commit/task (when applicable)
 * **member-service**: some Manager can CRUD Members
 * **pricing-service**: have 3 choices (free, half price, full price), and can edit their price and text description. And can see how many Members selected some choice
 * **service-app-registry** register all services in the network
@@ -80,11 +83,10 @@ This application provides a centralized platform for enterprise managers to admi
 
 ## Later:
 
-* look at the webstorm last history
-* Kafka to get Member service requests from landing page, and show in the member-service so the Manager can add
 * **notification-service**: send email to Member saying that the Service was confirmed
 * Add translation for PT-br
-* create readme for each service, and some diagram (Lucidchart, Excalidraw, draw.io, C4)
+* stress test
+* create readme for each service, and some diagram (Excalidraw, C4)
 
 
 
@@ -92,9 +94,12 @@ This application provides a centralized platform for enterprise managers to admi
 
 **Current:**
 
-* make test for navigation
-* create the landing page buttons, and configure auth routes, pricing page get and upsert (check the gemini historic)
-* create the Pricing-Feature upsert form to create the prices (test the application)
-* send a price message to member-service using rabbitmq and cache it with redis (just need to test)
-* get the prices in the member-feature and show
-* Feature Landing, create 3 cards with the price and description
+* integrate all servies to eureka and test the gateway
+* create one login page
+* /member configure the cors
+* configure OTel and Datadog
+* remove the css and use Tailwind4
+* change reative gateway to use virtual threads
+* configure kafka to receive the request from the landing page
+* change the keycloak login to auth0 (change the securityConfig)
+* use springdoc
