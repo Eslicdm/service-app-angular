@@ -3,7 +3,7 @@ export const environment = {
   apiUrl: 'http://localhost:8090/api',
   apiPaths: {
     memberRequest: '/v1/member-request',
-    members: '/v1/members/1',
+    members: '/v1/members',
     prices: '/v1/prices',
   },
   auth: {
@@ -12,8 +12,7 @@ export const environment = {
   },
   routes: {
     landing: 'landing',
-    member: 'member',
-    pricing: 'pricing',
-    login: 'login'
+    login: 'login',
+    management: 'management'
   }
 };

@@ -11,18 +11,13 @@ export const appRoutes: Routes = [
     title: 'Landing'
   },
   {
-    path: environment.routes.pricing,
-    loadComponent: () => import('./pricing/pricing').then(m => m.Pricing),
-    title: 'Pricing',
-  },
-  {
-    path: environment.routes.member,
-    loadComponent: () => import('./member/member').then(m => m.Member),
-    title: 'Member',
-  },
-  {
     path: environment.routes.login,
     loadComponent: () => import('./auth/login/login').then(m => m.Login),
     title: 'Login'
+  },
+  {
+    path: environment.routes.management,
+    loadComponent: () => import('./management/management').then(m => m.Management),
+    title: 'Management'
   },
 ];

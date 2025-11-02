@@ -1,0 +1,37 @@
+@switch (memberState().status) {
+  @case ('loading') {
+    <div class="flex items-center justify-center p-8"><mat-spinner /></div>
+  }
+  @case ('error') {
+    <p class="text-center text-red-600">Failed to load members. Please try again later.</p>
+  }
+  @case ('loaded') {
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-4">
+      @for (member of memberState().members; track member.id) {
+        <mat-card class="member-card">
+          <mat-card-header>
+            <img mat-card-avatar [src]="member.photo" [alt]="member.name" class="rounded-full">
+            <mat-card-title>{{ member.name }}</mat-card-title>
+            <mat-card-subtitle>ID: {{ member.id }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p><strong>Email:</strong> {{ member.email }}</p>
+            <p><strong>Birth Date:</strong> {{ member.birthDate }}</p>
+            <p><strong>Service Type:</strong> {{ member.serviceType }}</p>
+            <p><strong>Manager ID:</strong> {{ member.managerId }}</p>
+          </mat-card-content>
+          <mat-card-actions class="flex justify-end gap-2">
+            <button mat-icon-button (click)="onEdit(member)"
+                    [attr.data-testid]="'edit-button-' + member.id">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="onDelete(member)"
+                    [attr.data-testid]="'delete-button-' + member.id">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      }
+    </div>
+  }
+}

@@ -1,18 +1,37 @@
 # @name=getAllMembersByManagerId
+GET {{baseUrl}}/members?managerId=1
+Accept: application/json
+
+###
+# @name=getMemberById
 GET {{baseUrl}}/members/1
 Accept: application/json
 
 ###
 # @name=createMember
-POST {{baseUrl}}/members/1
+POST {{baseUrl}}/members?managerId=1
 Content-Type: application/json
 
 {
-  "name": "New Member2",
-  "email": "new.member2@serviceapp.com",
+  "name": "New Member1",
+  "email": "new.member1@serviceapp.com",
   "birthDate": "1990-01-15",
   "serviceType": "free"
 }
+
+###
+# @name=updateMember
+PUT {{baseUrl}}/members/1
+Content-Type: application/json
+
+{
+  "name": "Updated Member Name",
+  "email": "updated.member@serviceapp.com"
+}
+
+###
+# @name=deleteMember
+DELETE {{baseUrl}}/members/7
 
 ###
 # @name=getAllPrices

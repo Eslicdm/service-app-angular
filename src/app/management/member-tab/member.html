@@ -1,0 +1,13 @@
+<div class="container mx-auto p-6">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold">Members</h1>
+    <button mat-raised-button color="primary"
+            (click)="openCreateDialog()" data-testid="create-member-button">
+      <mat-icon>add</mat-icon>
+      Create Member
+    </button>
+  </div>
+
+  <app-member-list (editMember)="openEditDialog($event)"
+                   (deleteMember)="openDeleteDialog($event)"/>
+</div>

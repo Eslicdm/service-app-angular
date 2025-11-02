@@ -1,4 +1,4 @@
-export interface Member {
+export interface MemberModel {
   id: number;
   name: string;
   email: string;

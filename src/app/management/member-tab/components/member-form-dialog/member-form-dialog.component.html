@@ -1,0 +1,61 @@
+<h2 mat-dialog-title>{{ isEditMode ? 'Edit' : 'Create New' }} Member</h2>
+<mat-dialog-content>
+  <form [formGroup]="memberForm" class="flex flex-col gap-4">
+    <div class="flex justify-center mb-4">
+      <div class="w-24 h-24 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
+        @if (member) {
+          <img [src]="member.photo" [alt]="member.name" class="w-full h-full object-cover">
+        } @else {
+          <mat-icon class="text-5xl text-gray-400">person</mat-icon>
+        }
+      </div>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter name">
+      @if (hasError('name', 'required')) { <mat-error>Name is required</mat-error> }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" placeholder="Enter email">
+      @if (hasError('email', 'required')) { <mat-error>Email is required</mat-error> }
+      @if (hasError('email', 'email')) { <mat-error>Invalid email format</mat-error> }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Birth Date</mat-label>
+      <input matInput type="date" formControlName="birthDate">
+      @if (hasError('birthDate', 'required')) {
+        <mat-error>Birth date is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Service Type</mat-label>
+      <mat-select formControlName="serviceType">
+        @for (type of serviceTypes; track type) {
+          <mat-option [value]="type">{{ type | titlecase }}</mat-option>
+        }
+      </mat-select>
+      @if (hasError('serviceType', 'required')) {
+        <mat-error>Service type is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Manager ID</mat-label>
+      <input matInput type="number" formControlName="managerId" placeholder="Enter manager ID">
+      @if (hasError('managerId', 'required')) {
+        <mat-error>Manager ID is required</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button (click)="onSave()"
+          [disabled]="!memberForm.valid">{{ isEditMode ? 'Save Changes' : 'Create' }}
+  </button>
+</mat-dialog-actions>

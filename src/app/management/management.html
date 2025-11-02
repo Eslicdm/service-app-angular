@@ -1,0 +1,20 @@
+<div class="flex justify-between items-center p-6">
+  <h1 class="text-3xl font-bold">Management</h1>
+  <button mat-flat-button color="warn" (click)="logout()" data-testid="logout-button">
+    <mat-icon>logout</mat-icon>
+    Logout
+  </button>
+</div>
+
+<mat-tab-group>
+  <mat-tab label="Members">
+    <ng-template matTabContent>
+      <app-member />
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Pricing">
+    <ng-template matTabContent>
+      <app-pricing />
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
