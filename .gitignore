@@ -27,6 +27,7 @@ yarn-error.log
 
 # Generated environment files with secrets
 /src/environments/environment.development.ts
+http/auth/http-client.private.env.json
 
 # Visual Studio Code
 .vscode/*

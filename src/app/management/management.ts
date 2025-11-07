@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import {Router} from '@angular/router';
 import {MatTab, MatTabContent, MatTabGroup} from '@angular/material/tabs';
 import {Member} from './member-tab/member';
 import {Pricing} from './pricing-tab/pricing';
+import {AuthService} from '../auth/service/auth.service';
 
 @Component({
   selector: 'app-management',
@@ -22,10 +22,7 @@ import {Pricing} from './pricing-tab/pricing';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Management {
-  private readonly router = inject(Router);
+  private readonly authService = inject(AuthService);
 
-  logout(): void {
-    // this.oauthService.logOut();
-    this.router.navigate(['/']);
-  }
+  logout(): void { this.authService.logout(); }
 }

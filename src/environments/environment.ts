@@ -7,12 +7,11 @@ export const environment = {
     prices: '/v1/prices',
   },
   auth: {
-    domain: 'domain',
-    clientId: 'clientId'
+    issuer: 'http://localhost:8080/realms/service-app-realm',
+    clientId: 'service-app-angular'
   },
   routes: {
     landing: 'landing',
-    login: 'login',
     management: 'management'
   }
 };

@@ -26,9 +26,15 @@
 
     <mat-form-field>
       <mat-label>Birth Date</mat-label>
-      <input matInput type="date" formControlName="birthDate">
+      <input matInput [matDatepicker]="picker" formControlName="birthDate"
+             placeholder="Choose a date">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
       @if (hasError('birthDate', 'required')) {
-        <mat-error>Birth date is required</mat-error>
+        <mat-error>Birth Date is required</mat-error>
+      }
+      @if (hasError('birthDate', 'maxDate') || hasError('birthDate', 'minDate')) {
+        <mat-error>Birth date is invalid</mat-error>
       }
     </mat-form-field>
 
@@ -41,14 +47,6 @@
       </mat-select>
       @if (hasError('serviceType', 'required')) {
         <mat-error>Service type is required</mat-error>
-      }
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Manager ID</mat-label>
-      <input matInput type="number" formControlName="managerId" placeholder="Enter manager ID">
-      @if (hasError('managerId', 'required')) {
-        <mat-error>Manager ID is required</mat-error>
       }
     </mat-form-field>
   </form>

@@ -1,5 +1,6 @@
 import {Routes} from '@angular/router';
 import {environment} from '../environments/environment';
+import {authGuard} from './auth/service/auth.guard';
 
 export const appRoutes: Routes = [
   {
@@ -11,12 +12,8 @@ export const appRoutes: Routes = [
     title: 'Landing'
   },
   {
-    path: environment.routes.login,
-    loadComponent: () => import('./auth/login/login').then(m => m.Login),
-    title: 'Login'
-  },
-  {
     path: environment.routes.management,
+    canActivate: [authGuard],
     loadComponent: () => import('./management/management').then(m => m.Management),
     title: 'Management'
   },

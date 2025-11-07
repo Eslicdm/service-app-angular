@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MemberModel } from '../model/member.model';
 import { environment } from '../../../../environments/environment';
@@ -12,13 +12,11 @@ export class MemberService {
   private readonly membersUrl = `${environment.apiUrl}${environment.apiPaths.members}`;
 
   getMembers(): Observable<MemberModel[]> {
-    const params = new HttpParams().set('managerId', '1');
-    return this.http.get<MemberModel[]>(this.membersUrl, { params });
+    return this.http.get<MemberModel[]>(this.membersUrl);
   }
 
-  createMember(member: Omit<MemberModel, 'id'>): Observable<MemberModel> {
-    const params = new HttpParams().set('managerId', '1');
-    return this.http.post<MemberModel>(this.membersUrl, member, { params });
+  createMember(member: Omit<MemberModel, 'id' | 'managerId'>): Observable<MemberModel> {
+    return this.http.post<MemberModel>(this.membersUrl, member);
   }
 
   updateMember(id: number, member: MemberModel): Observable<MemberModel> {

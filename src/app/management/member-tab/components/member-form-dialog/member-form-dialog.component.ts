@@ -9,6 +9,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MemberModel } from '../../model/member.model';
 import { MemberService } from '../../member-service/member.service';
+import {
+  MatDatepicker,
+  MatDatepickerInput,
+  MatDatepickerToggle
+} from '@angular/material/datepicker';
+import { CustomValidators } from 'ngx-custom-validators';
 
 @Component({
   selector: 'app-member-form-dialog',
@@ -21,7 +27,10 @@ import { MemberService } from '../../member-service/member.service';
     MatButtonModule,
     MatIconModule,
     MatSelectModule,
-    TitleCasePipe
+    TitleCasePipe,
+    MatDatepickerInput,
+    MatDatepickerToggle,
+    MatDatepicker
   ],
   templateUrl: './member-form-dialog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -41,9 +50,12 @@ export class MemberFormDialog {
     this.memberForm = this.formBuilder.group({
       name: [this.member?.name ?? '', Validators.required],
       email: [this.member?.email ?? '', [Validators.required, Validators.email]],
-      birthDate: [this.member?.birthDate ?? '', Validators.required],
+      birthDate: [this.member?.birthDate ?? '', [
+        Validators.required,
+        CustomValidators.maxDate(new Date()),
+        CustomValidators.minDate(new Date('1900-01-01'))
+      ]],
       serviceType: [this.member?.serviceType ?? '', Validators.required],
-      managerId: [this.member?.managerId ?? '', Validators.required],
     });
 
     if (!this.isEditMode) {

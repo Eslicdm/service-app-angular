@@ -5,5 +5,5 @@ export interface MemberModel {
   birthDate: string;
   photo: string;
   serviceType: string;
-  managerId: number;
+  managerId: string;
 }

@@ -1,8 +1,9 @@
 # @name=submitMemberRequest
 POST {{baseUrl}}/member-requests
 Content-Type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
-  "email": "new5.prospect@example.com",
+  "email": "new.prospect1@example.com",
   "serviceType": "FULL_PRICE"
 }

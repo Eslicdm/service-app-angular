@@ -17,8 +17,7 @@ import {
 import {
   MatToolbarModule
 } from '@angular/material/toolbar';
-import {Router} from '@angular/router';
-import {environment} from 'src/environments/environment';
+import {AuthService} from '../auth/service/auth.service';
 
 @Component({
   selector: 'app-landing',
@@ -35,10 +34,7 @@ import {environment} from 'src/environments/environment';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Landing {
-  private readonly router = inject(Router);
-  protected readonly environment = environment;
+  private readonly authService = inject(AuthService);
 
-  navigateToLogin(target: string): void {
-    this.router.navigate([target]);
-  }
+  login(): void { this.authService.login() }
 }

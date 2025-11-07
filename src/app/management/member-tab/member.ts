@@ -1,5 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { Router } from '@angular/router';
+import {ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MemberList } from './member-list/member-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,21 +19,7 @@ import { MemberFormDialog } from './components/member-form-dialog/member-form-di
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Member {
-  // private readonly oauthService = inject(OAuthService);
-
   private readonly dialog = inject(MatDialog);
-
-  // readonly user = signal<{ name: string; email: string } | null>(null);
-  //
-  // constructor() {
-  //   const claims = this.oauthService.getIdentityClaims() as any;
-  //   if (claims) {
-  //     this.user.set({
-  //       name: claims.name || claims.given_name || 'User',
-  //       email: claims.email || ''
-  //     });
-  //   }
-  // }
 
   openCreateDialog(): void {
     const dialogRef = this.dialog.open(MemberFormDialog, {
