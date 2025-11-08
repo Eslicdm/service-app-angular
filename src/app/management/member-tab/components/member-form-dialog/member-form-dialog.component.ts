@@ -57,10 +57,6 @@ export class MemberFormDialog {
       ]],
       serviceType: [this.member?.serviceType ?? '', Validators.required],
     });
-
-    if (!this.isEditMode) {
-      this.memberForm.addControl('photo', this.formBuilder.control('https://via.placeholder.com/150'));
-    }
   }
 
   hasError(controlName: string, errorName: string): boolean {
@@ -81,7 +77,8 @@ export class MemberFormDialog {
         error: (err) => console.error('Error updating member:', err)
       });
     } else {
-      const newMember = { ...formValue, birthDate };
+      const photo = `https://ui-avatars.com/api/?name=${encodeURIComponent(formValue.name)}&background=random`;
+      const newMember = { ...formValue, birthDate, photo };
       this.memberService.createMember(newMember).subscribe({
         next: () => this.dialogRef.close(true),
         error: (err) => console.error('Error creating member:', err)
