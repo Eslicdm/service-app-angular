@@ -7,7 +7,7 @@ export const environment = {
     prices: '/v1/prices',
   },
   auth: {
-    issuer: 'http://localhost:8080/realms/service-app-realm',
+    issuer: 'http://keycloak:8080/realms/service-app-realm',
     clientId: 'service-app-angular'
   },
   routes: {

@@ -9,4 +9,5 @@ export const authConfig: AuthConfig = {
   responseType: 'code',
   silentRefreshRedirectUri: globalThis.location.origin + '/silent-refresh.html',
   useSilentRefresh: true,
+  requireHttps: false,
 };
