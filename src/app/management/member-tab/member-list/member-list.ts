@@ -6,10 +6,10 @@ import {MemberService} from '../member-service/member.service';
 import {MatIconButton} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 
-type MemberState = {
+interface MemberState {
   members: MemberModel[];
   status: 'loading' | 'loaded' | 'error';
-};
+}
 
 @Component({
   selector: 'app-member-list',
