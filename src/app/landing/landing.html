@@ -20,7 +20,8 @@
           </ul>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-flat-button>Buy</button>
+          <button mat-flat-button
+          (click)="selectPlan('Free', emailInput, serviceTypeSelect)">Buy</button>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -37,7 +38,8 @@
           </ul>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-flat-button>Buy</button>
+          <button mat-flat-button
+          (click)="selectPlan('Half Price', emailInput, serviceTypeSelect)">Buy</button>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -54,7 +56,8 @@
           </ul>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-flat-button>Buy</button>
+          <button mat-flat-button
+          (click)="selectPlan('Full Price', emailInput, serviceTypeSelect)">Buy</button>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -76,12 +79,12 @@
   <div class="flex w-full max-w-xl flex-col gap-4 rounded-lg border-2 border-solid p-6">
     <mat-form-field appearance="fill" class="w-full">
       <mat-label>Email</mat-label>
-      <input matInput type="email" />
+      <input #emailInput matInput type="email" />
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="w-full">
       <mat-label>ServiceType</mat-label>
-      <mat-select value="Free">
+      <mat-select #serviceTypeSelect [(value)]="selectedServiceType">
         <mat-option value="Free">Free</mat-option>
         <mat-option value="Half Price">Half Price</mat-option>
         <mat-option value="Full Price">Full Price</mat-option>
