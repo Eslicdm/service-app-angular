@@ -21,7 +21,7 @@
         </mat-card-content>
         <mat-card-actions>
           <button mat-flat-button
-          (click)="selectPlan('Free', emailInput, serviceTypeSelect)">Buy</button>
+          (click)="selectPlan('Free', emailInput)">Buy</button>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -39,7 +39,7 @@
         </mat-card-content>
         <mat-card-actions>
           <button mat-flat-button
-          (click)="selectPlan('Half Price', emailInput, serviceTypeSelect)">Buy</button>
+          (click)="selectPlan('Half Price', emailInput)">Buy</button>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -57,7 +57,7 @@
         </mat-card-content>
         <mat-card-actions>
           <button mat-flat-button
-          (click)="selectPlan('Full Price', emailInput, serviceTypeSelect)">Buy</button>
+          (click)="selectPlan('Full Price', emailInput)">Buy</button>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -76,21 +76,42 @@
     </div>
   </div>
 
-  <div class="flex w-full max-w-xl flex-col gap-4 rounded-lg border-2 border-solid p-6">
+  <form [formGroup]="requestForm" (ngSubmit)="submitRequest()"
+        class="flex w-full max-w-xl flex-col gap-4 rounded-lg border-2 border-solid p-6">
+    <h2 class="mb-4 text-center text-xl font-semibold">
+      Write your email and submit your plan request.
+    </h2>
     <mat-form-field appearance="fill" class="w-full">
       <mat-label>Email</mat-label>
-      <input #emailInput matInput type="email" />
+      <input #emailInput matInput type="email" formControlName="email" />
+      @if (requestForm.get('email')?.hasError('required')) {
+        <mat-error>Email is required.</mat-error>
+      }
+      @if (requestForm.get('email')?.hasError('email')) {
+        <mat-error>Please enter a valid email address.</mat-error>
+      }
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="w-full">
       <mat-label>ServiceType</mat-label>
-      <mat-select #serviceTypeSelect [(value)]="selectedServiceType">
+      <mat-select formControlName="serviceType">
         <mat-option value="Free">Free</mat-option>
         <mat-option value="Half Price">Half Price</mat-option>
         <mat-option value="Full Price">Full Price</mat-option>
       </mat-select>
+      @if (requestForm.get('serviceType')?.hasError('required')) {
+        <mat-error>Service Type is required.</mat-error>
+      }
     </mat-form-field>
 
-    <button mat-flat-button color="primary">Submit</button>
-  </div>
+    <button mat-flat-button color="primary"
+            type="submit" [disabled]="requestForm.invalid || submitting()">
+      @if (submitting()) {
+        <mat-spinner [diameter]="24" class="mr-2 inline-block" />
+        <span>Submitting...</span>
+      } @else {
+        <span>Submit</span>
+      }
+    </button>
+  </form>
 </div>
