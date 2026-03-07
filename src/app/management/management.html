@@ -1,20 +1,64 @@
-<div class="flex justify-between items-center p-6">
-  <h1 class="text-3xl font-bold">Management</h1>
-  <button mat-flat-button color="warn" (click)="logout()" data-testid="logout-button">
-    <mat-icon>logout</mat-icon>
-    Logout
-  </button>
-</div>
+<mat-sidenav-container class="h-screen w-full">
+  <!-- Mobile Sidenav (Drawer) -->
+  <mat-sidenav mode="over" [opened]="mobileMenuOpen()"
+               (openedChange)="mobileMenuOpen.set($event)" class="w-64">
+    <ng-container *ngTemplateOutlet="menuContent" />
+  </mat-sidenav>
 
-<mat-tab-group>
-  <mat-tab label="Members">
-    <ng-template matTabContent>
-      <app-member />
-    </ng-template>
-  </mat-tab>
-  <mat-tab label="Pricing">
-    <ng-template matTabContent>
-      <app-pricing />
-    </ng-template>
-  </mat-tab>
-</mat-tab-group>
+  <mat-sidenav-content>
+    <div class="flex h-full">
+      <!-- Desktop Sidebar (Hidden on Mobile) -->
+      <aside class="hidden md:flex w-64 flex-col border-r h-full">
+        <ng-container *ngTemplateOutlet="menuContent" />
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Mobile Header (Visible on Mobile) -->
+        <header class="md:hidden flex items-center p-4 border-b shrink-0">
+          <button mat-icon-button (click)="mobileMenuOpen.set(!mobileMenuOpen())">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span class="ml-4 text-xl font-bold">Management</span>
+        </header>
+
+        <div class="flex-1 overflow-auto p-8">
+          @if (currentView() === 'members') {
+            <app-member />
+          } @else {
+            <app-pricing />
+          }
+        </div>
+      </main>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<ng-template #menuContent>
+  <div class="flex flex-col h-full">
+    <div class="p-6 border-b">
+      <h1 class="text-2xl font-bold">Management</h1>
+    </div>
+
+    <mat-action-list class="flex-1 py-4">
+      <button mat-list-item (click)="currentView.set('members');
+      mobileMenuOpen.set(false)" [class.active]="currentView() === 'members'">
+        <mat-icon matListItemIcon>people</mat-icon>
+        <span matListItemTitle class="font-medium">Members</span>
+      </button>
+      <button mat-list-item (click)="currentView.set('pricing');
+      mobileMenuOpen.set(false)" [class.active]="currentView() === 'pricing'">
+        <mat-icon matListItemIcon>attach_money</mat-icon>
+        <span matListItemTitle class="font-medium">Pricing</span>
+      </button>
+    </mat-action-list>
+
+    <div class="p-4 border-t">
+      <button mat-flat-button color="warn" class="w-full"
+              (click)="logout()" data-testid="logout-button">
+        <mat-icon>logout</mat-icon>
+        Logout
+      </button>
+    </div>
+  </div>
+</ng-template>

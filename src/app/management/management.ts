@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatTab, MatTabContent, MatTabGroup} from '@angular/material/tabs';
-import {Member} from './member-tab/member';
-import {Pricing} from './pricing-tab/pricing';
-import {AuthService} from '../auth/service/auth.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { Member } from './member-tab/member';
+import { Pricing } from './pricing-tab/pricing';
+import { AuthService } from '../auth/service/auth.service';
 
 @Component({
   selector: 'app-management',
@@ -12,17 +14,20 @@ import {AuthService} from '../auth/service/auth.service';
   imports: [
     MatButtonModule,
     MatIconModule,
-    MatTabGroup,
-    MatTab,
+    MatSidenavModule,
+    MatListModule,
+    NgTemplateOutlet,
     Member,
     Pricing,
-    MatTabContent,
   ],
   templateUrl: './management.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Management {
   private readonly authService = inject(AuthService);
+
+  readonly currentView = signal<'members' | 'pricing'>('members');
+  readonly mobileMenuOpen = signal(false);
 
   logout(): void { this.authService.logout(); }
 }
