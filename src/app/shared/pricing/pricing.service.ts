@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment'
-import { PriceModel, PriceType } from '../model/price.model';
+import { environment } from '../../../environments/environment'
+import { PriceModel, PriceType } from './price.model';
 
 export type PriceUpdateDto = Pick<PriceModel, 'value' | 'description'>;
 

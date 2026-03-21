@@ -5,8 +5,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { TitleCasePipe } from '@angular/common';
-import { PriceModel } from '../../model/price.model';
-import { PricingService, PriceUpdateDto } from '../../pricing-service/pricing.service';
+import { PriceModel } from '../../../../shared/pricing/price.model';
+import { PricingService, PriceUpdateDto } from '../../../../shared/pricing/pricing.service';
 
 @Component({
   selector: 'app-pricing-form-dialog',

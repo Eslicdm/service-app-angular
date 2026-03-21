@@ -19,27 +19,22 @@
       } @else {
         <div class="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-4">
           @for (price of pricingState().prices; track price.id) {
-            <mat-card class="price-card">
-              <mat-card-header>
-                <mat-card-title>{{ price.priceType | titlecase }}</mat-card-title>
-                <mat-card-subtitle>$ {{ price.value }}</mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content>
-                <p class="mb-4" >{{ price.description }}</p>
+            <app-pricing-card [price]="price" class="price-card">
+              <div extra-content>
                 <p class="text-sm text-gray-300">
                   <strong>Created:</strong> {{ price.createdAt | date:'short' }}
                 </p>
                 <p class="text-sm text-gray-300">
                   <strong>Updated:</strong> {{ price.updatedAt | date:'short' }}
                 </p>
-              </mat-card-content>
-              <mat-card-actions class="flex justify-end gap-2">
+              </div>
+              <ng-container actions>
                 <button mat-icon-button (click)="openEditDialog(price)"
                         [attr.data-testid]="'edit-price-' + price.priceType">
                   <mat-icon>edit</mat-icon>
                 </button>
-              </mat-card-actions>
-            </mat-card>
+              </ng-container>
+            </app-pricing-card>
           }
         </div>
       }

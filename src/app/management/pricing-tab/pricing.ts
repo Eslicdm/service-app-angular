@@ -5,15 +5,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { PriceModel } from './model/price.model';
-import { PricingService } from './pricing-service/pricing.service';
+import { PriceModel } from '../../shared/pricing/price.model';
+import { PricingService } from '../../shared/pricing/pricing.service';
 import { PricingFormDialog } from './components/pricing-form-dialog/pricing-form-dialog.component';
-import {
-  MatCard, MatCardActions, MatCardContent,
-  MatCardHeader,
-  MatCardSubtitle,
-  MatCardTitle
-} from '@angular/material/card';
+import { PricingCardComponent } from '../../shared/pricing/pricing-card.component';
 
 type PricingState = {
   prices: PriceModel[];
@@ -30,13 +25,7 @@ type PricingState = {
     MatProgressSpinnerModule,
     MatDialogModule,
     DatePipe,
-    TitleCasePipe,
-    MatCard,
-    MatCardHeader,
-    MatCardTitle,
-    MatCardSubtitle,
-    MatCardContent,
-    MatCardActions,
+    PricingCardComponent,
   ],
   templateUrl: './pricing.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
