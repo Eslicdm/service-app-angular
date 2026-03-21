@@ -1,0 +1,9 @@
+services:
+  angular-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: service-app-angular
+    ports:
+      - "4200:80"
+    restart: no
