@@ -25,6 +25,8 @@
         <div class="flex-1 overflow-auto p-8">
           @if (currentView() === 'members') {
             <app-member />
+          } @else if (currentView() === 'requests') {
+            <app-request-tab />
           } @else {
             <app-pricing />
           }
@@ -45,6 +47,11 @@
       mobileMenuOpen.set(false)" [class.active]="currentView() === 'members'">
         <mat-icon matListItemIcon>people</mat-icon>
         <span matListItemTitle class="font-medium">Members</span>
+      </button>
+      <button mat-list-item (click)="currentView.set('requests');
+      mobileMenuOpen.set(false)" [class.active]="currentView() === 'requests'">
+        <mat-icon matListItemIcon>assignment</mat-icon>
+        <span matListItemTitle class="font-medium">Requests</span>
       </button>
       <button mat-list-item (click)="currentView.set('pricing');
       mobileMenuOpen.set(false)" [class.active]="currentView() === 'pricing'">

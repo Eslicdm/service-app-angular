@@ -6,6 +6,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { Member } from './member-tab/member';
 import { Pricing } from './pricing-tab/pricing';
+import { RequestTab } from './request-tab/request';
 import { AuthService } from '../auth/service/auth.service';
 
 @Component({
@@ -18,6 +19,7 @@ import { AuthService } from '../auth/service/auth.service';
     MatListModule,
     NgTemplateOutlet,
     Member,
+    RequestTab,
     Pricing,
   ],
   templateUrl: './management.html',
@@ -26,7 +28,7 @@ import { AuthService } from '../auth/service/auth.service';
 export class Management {
   private readonly authService = inject(AuthService);
 
-  readonly currentView = signal<'members' | 'pricing'>('members');
+  readonly currentView = signal<'members' | 'requests' | 'pricing'>('members');
   readonly mobileMenuOpen = signal(false);
 
   logout(): void { this.authService.logout(); }

@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import {DeleteMemberDialog} from './components/delete_member_dialog_component';
 import {MemberModel} from './model/member.model';
-import { MemberFormDialog } from './components/member-form-dialog/member-form-dialog.component';
+import { MemberFormDialog } from '../request-tab/components/member-form-dialog/member-form-dialog';
 
 @Component({
   selector: 'app-member',
@@ -20,17 +20,6 @@ import { MemberFormDialog } from './components/member-form-dialog/member-form-di
 })
 export class Member {
   private readonly dialog = inject(MatDialog);
-
-  openCreateDialog(): void {
-    const dialogRef = this.dialog.open(MemberFormDialog, {
-      width: '500px',
-      disableClose: false
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) globalThis.location.reload();
-    });
-  }
 
   openEditDialog(memberModel: MemberModel): void {
     const dialogRef = this.dialog.open(MemberFormDialog, {

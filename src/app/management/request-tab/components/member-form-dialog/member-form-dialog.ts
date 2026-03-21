@@ -32,7 +32,7 @@ import { CustomValidators } from 'ngx-custom-validators';
     MatDatepickerToggle,
     MatDatepicker
   ],
-  templateUrl: './member-form-dialog.component.html',
+  templateUrl: './member-form-dialog.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MemberFormDialog {
